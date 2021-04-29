@@ -351,3 +351,4 @@ MigrationBackup/
 
 # Frontend
 build
+node_modules
