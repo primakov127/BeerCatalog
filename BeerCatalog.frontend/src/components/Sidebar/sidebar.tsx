@@ -28,14 +28,7 @@ const Sidebar = ({ isDisplayed, onClose }: SidebarProps) => {
       <h2 className="sidebar__title">Beer Catalog</h2>
       {SidebarData.map((item, index) => {
         return (
-          <NavLink
-            onClick={onClose}
-            exact
-            activeClassName="sidebar__item_selected"
-            className="sidebar__item"
-            to={item.path}
-            key={index}
-          >
+          <NavLink onClick={onClose} exact activeClassName="sidebar__item_selected" className="sidebar__item" to={item.path} key={index}>
             {item.icon}
             <span className="sidebar__item-text">{item.title}</span>
           </NavLink>

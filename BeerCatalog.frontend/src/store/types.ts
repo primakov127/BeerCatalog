@@ -1,10 +1,12 @@
-export interface BeerCatalogItem {
+export interface BeerItem {
   id: number;
   name: string;
-  tagLine: string;
+  tagline: string;
   image_url: string;
 }
 
 export interface AppState {
-  beerCatalog: BeerCatalogItem[];
+  beerCatalog: BeerItem[];
+  isCatalogLoading: boolean;
+  favoriteBeerIDs: number[];
 }
