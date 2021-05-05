@@ -5,8 +5,15 @@ export interface BeerItem {
   image_url: string;
 }
 
+export interface BeerSearchingParams {
+  pageSize: number;
+  currentPage: number;
+  beerName: string | null;
+}
+
 export interface AppState {
   beerCatalog: BeerItem[];
   isCatalogLoading: boolean;
   favoriteBeerIDs: number[];
+  searchParams: BeerSearchingParams;
 }

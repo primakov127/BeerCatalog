@@ -5,7 +5,6 @@ const useIntersectionObserver = (ref: RefObject<Element>, callback: Intersection
     const observer = new IntersectionObserver(callback);
     if (ref.current) {
       observer.observe(ref.current);
-      console.log("observe");
     }
   }, []);
 };
