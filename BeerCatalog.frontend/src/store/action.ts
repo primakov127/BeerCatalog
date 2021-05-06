@@ -8,6 +8,7 @@ export const ADD_BEER_CATALOG = "ADD_BEER_CATALOG";
 export const SET_IS_CATALOG_LOADING = "SET_IS_CATALOG_LOADING";
 
 export const ADD_BEER_FAVORITES = "ADD_BEER_FAVORITES";
+export const REMOVE_BEER_FAVORITES = "REMOVE_BEER_FAVORITES";
 
 export const INC_SEARCH_CURRENT_PAGE = "INC_SEARCH_CURRENT_PAGE";
 export const RESET_SEARCH_CURRENT_PAGE = "SET_SEARCH_CURRENT_PAGE";
@@ -19,6 +20,7 @@ export type ActionType =
   | { type: typeof ADD_BEER_CATALOG; payload: BeerItem[] }
   | { type: typeof SET_IS_CATALOG_LOADING; payload: boolean }
   | { type: typeof ADD_BEER_FAVORITES; payload: number }
+  | { type: typeof REMOVE_BEER_FAVORITES; payload: number }
   | { type: typeof INC_SEARCH_CURRENT_PAGE }
   | { type: typeof RESET_SEARCH_CURRENT_PAGE }
   | { type: typeof SET_SEARCH_BEER_NAME; payload: string }
@@ -42,6 +44,11 @@ export const setIsCatalogLoading = (isLoading: boolean): ActionType => ({
 
 export const addBeerFavorites = (id: number): ActionType => ({
   type: ADD_BEER_FAVORITES,
+  payload: id,
+});
+
+export const removeBeerFavorites = (id: number): ActionType => ({
+  type: REMOVE_BEER_FAVORITES,
   payload: id,
 });
 

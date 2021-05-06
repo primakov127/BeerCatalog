@@ -1,5 +1,6 @@
-import { useDispatch } from "react-redux";
-import { addBeerFavorites } from "../../store/action";
+import { useDispatch, useSelector } from "react-redux";
+import { addBeerFavorites, removeBeerFavorites } from "../../store/action";
+import { AppState } from "../../store/types";
 import "./beerCatalogCard.scss";
 
 interface BeerCatalogCardProps {
@@ -10,10 +11,12 @@ interface BeerCatalogCardProps {
 }
 
 const BeerCatalogCard = ({ id, name, tagline, image_url }: BeerCatalogCardProps) => {
+  const isFavorite = useSelector((state: AppState) => state.favoriteBeerIDs.includes(id));
   const dispatch = useDispatch();
 
-  const addToFavorite = () => {
-    dispatch(addBeerFavorites(id));
+  const buttonText = isFavorite ? "REMOVE FAVORITE" : "FAVORITE";
+  const handleClick = () => {
+    isFavorite ? dispatch(removeBeerFavorites(id)) : dispatch(addBeerFavorites(id));
   };
 
   return (
@@ -24,7 +27,7 @@ const BeerCatalogCard = ({ id, name, tagline, image_url }: BeerCatalogCardProps)
       <div className="beer-catalog-card__container">
         <h3 className="beer-catalog-card__title">{name}</h3>
         <span className="beer-catalog-card__tagline">{tagline}</span>
-        <button onClick={addToFavorite}>Favorite</button>
+        <button onClick={handleClick}>{buttonText}</button>
       </div>
     </div>
   );

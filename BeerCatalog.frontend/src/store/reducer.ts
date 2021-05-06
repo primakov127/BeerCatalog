@@ -3,6 +3,7 @@ import {
   ADD_BEER_CATALOG,
   ADD_BEER_FAVORITES,
   INC_SEARCH_CURRENT_PAGE,
+  REMOVE_BEER_FAVORITES,
   RESET_SEARCH_BEER_NAME,
   RESET_SEARCH_CURRENT_PAGE,
   SET_BEER_CATALOG,
@@ -32,6 +33,8 @@ const reducer = (state: AppState = initialState, action: ActionType) => {
       return { ...state, isCatalogLoading: action.payload };
     case ADD_BEER_FAVORITES:
       return { ...state, favoriteBeerIDs: [...state.favoriteBeerIDs, action.payload] };
+    case REMOVE_BEER_FAVORITES:
+      return { ...state, favoriteBeerIDs: state.favoriteBeerIDs.filter((id) => id !== action.payload) };
     case INC_SEARCH_CURRENT_PAGE:
       return { ...state, searchParams: { ...state.searchParams, currentPage: state.searchParams.currentPage + 1 } };
     case RESET_SEARCH_CURRENT_PAGE:
