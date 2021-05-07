@@ -7,6 +7,7 @@ import Favorites from "../../pages/Favorites";
 import Home from "../../pages/Home";
 
 import store from "../../store/store";
+import BeerDetails from "../../pages/BeerDetails";
 
 const App = () => {
   const history = createBrowserHistory();
@@ -19,6 +20,7 @@ const App = () => {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/favorites" component={Favorites} />
+            <Route path="/beers/:id" component={BeerDetails} />
           </Switch>
         </Router>
       </Provider>

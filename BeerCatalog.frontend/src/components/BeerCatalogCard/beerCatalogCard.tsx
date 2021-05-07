@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { addBeerFavorites, removeBeerFavorites } from "../../store/action";
 import { AppState } from "../../store/state";
@@ -16,6 +17,7 @@ const BeerCatalogCard = ({ id, name, tagline, image_url }: BeerCatalogCardProps)
   const isFavorite = useSelector((state: AppState) => state.favoriteBeerIDs.includes(id));
   const dispatch = useDispatch();
 
+  const BeerDetailsPageUrl = `/beers/${id}`;
   const buttonText = isFavorite ? "REMOVE FAVORITE" : "FAVORITE";
   const handleClick = () => {
     isFavorite ? dispatch(removeBeerFavorites(id)) : dispatch(addBeerFavorites(id));
@@ -30,6 +32,7 @@ const BeerCatalogCard = ({ id, name, tagline, image_url }: BeerCatalogCardProps)
         <h3 className="beer-catalog-card__title">{name}</h3>
         <span className="beer-catalog-card__tagline">{tagline}</span>
         <button onClick={handleClick}>{buttonText}</button>
+        <Link to={BeerDetailsPageUrl}>Open</Link>
       </div>
     </div>
   );
