@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
+
 import { addBeerFavorites, removeBeerFavorites } from "../../store/action";
-import { AppState } from "../../store/types";
+import { AppState } from "../../store/state";
+
 import "./beerCatalogCard.scss";
 
 interface BeerCatalogCardProps {

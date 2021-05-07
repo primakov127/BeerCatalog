@@ -4,7 +4,7 @@ import PulseLoader from "react-spinners/PulseLoader";
 
 import useIntersectionObserver from "../../hooks/useIntersectionObserver";
 import { incSearchCurrentPage, loadBeerCatalog } from "../../store/action";
-import { AppState } from "../../store/types";
+import { AppState } from "../../store/state";
 import BeerCatalogCard from "../BeerCatalogCard/beerCatalogCard";
 
 import "./beerCatalog.scss";
@@ -12,7 +12,7 @@ import "./beerCatalog.scss";
 const BeerCatalog = () => {
   const beerList = useSelector((state: AppState) => state.beerCatalog);
   const isLoading = useSelector((state: AppState) => state.isCatalogLoading);
-  const { currentPage, beerName } = useSelector((state: AppState) => state.searchParams);
+  const searchParams = useSelector((state: AppState) => state.searchParams);
   const dispatch = useDispatch();
   const lastElement = useRef(null);
 
@@ -26,8 +26,11 @@ const BeerCatalog = () => {
   useIntersectionObserver(lastElement, handleObserver);
 
   useEffect(() => {
-    dispatch(loadBeerCatalog());
-  }, [dispatch, currentPage, beerName]);
+    const loadTimeout = setTimeout(() => {
+      dispatch(loadBeerCatalog());
+    }, 200);
+    return () => clearTimeout(loadTimeout);
+  }, [dispatch, searchParams]);
 
   return (
     <>

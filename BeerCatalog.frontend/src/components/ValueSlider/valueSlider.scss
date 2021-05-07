@@ -1,0 +1,16 @@
+.value-slider {
+  display: flex;
+
+  align-items: center;
+  width: 400px;
+
+  .value-slider__prefix {
+    width: 40px;
+    padding-right: 30px;
+  }
+
+  .value-slider__postfix {
+    width: 40px;
+    padding-left: 30px;
+  }
+}

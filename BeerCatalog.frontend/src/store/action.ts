@@ -1,7 +1,8 @@
 import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
 
-import { AppState, BeerItem } from "./types";
+import { BeerItem } from "./models/BeerItem";
+import { AppState } from "./state";
 
 export const SET_BEER_CATALOG = "SET_BEER_CATALOG";
 export const ADD_BEER_CATALOG = "ADD_BEER_CATALOG";
@@ -14,6 +15,9 @@ export const INC_SEARCH_CURRENT_PAGE = "INC_SEARCH_CURRENT_PAGE";
 export const RESET_SEARCH_CURRENT_PAGE = "SET_SEARCH_CURRENT_PAGE";
 export const SET_SEARCH_BEER_NAME = "SET_SEARCH_BEER_NAME";
 export const RESET_SEARCH_BEER_NAME = "RESET_SEARCH_BEAR_NAME";
+export const SET_FILTER_ABV = "SET_FILTER_ABV";
+export const SET_FILTER_IBU = "SET_FILTER_IBU";
+export const SET_FILTER_EBC = "SET_FILTER_EBC";
 
 export type ActionType =
   | { type: typeof SET_BEER_CATALOG; payload: BeerItem[] }
@@ -24,7 +28,10 @@ export type ActionType =
   | { type: typeof INC_SEARCH_CURRENT_PAGE }
   | { type: typeof RESET_SEARCH_CURRENT_PAGE }
   | { type: typeof SET_SEARCH_BEER_NAME; payload: string }
-  | { type: typeof RESET_SEARCH_BEER_NAME };
+  | { type: typeof RESET_SEARCH_BEER_NAME }
+  | { type: typeof SET_FILTER_ABV; payload: number[] }
+  | { type: typeof SET_FILTER_IBU; payload: number[] }
+  | { type: typeof SET_FILTER_EBC; payload: number[] };
 
 // Action creators
 export const setBeerCatalog = (beerCatalog: BeerItem[]): ActionType => ({
@@ -67,13 +74,34 @@ export const setSearchBeerName = (beerName: string): ActionType => ({
 
 export const resetSearchBeerName = (): ActionType => ({ type: RESET_SEARCH_BEER_NAME });
 
+export const setFilterABV = (value: number[]): ActionType => ({
+  type: SET_FILTER_ABV,
+  payload: value,
+});
+
+export const setFilterIBU = (value: number[]): ActionType => ({
+  type: SET_FILTER_IBU,
+  payload: value,
+});
+
+export const setFilterEBC = (value: number[]): ActionType => ({
+  type: SET_FILTER_EBC,
+  payload: value,
+});
+
 export const loadBeerCatalog = (): ThunkAction<void, AppState, unknown, Action> => async (dispatch, getState) => {
-  const { pageSize, currentPage, beerName } = getState().searchParams;
+  const searchParams = getState().searchParams;
   const queryParams = new URLSearchParams();
 
-  queryParams.set("page", currentPage.toString());
-  queryParams.set("per_page", pageSize.toString());
-  beerName ? queryParams.set("beer_name", beerName) : null;
+  queryParams.set("page", searchParams.currentPage.toString());
+  queryParams.set("per_page", searchParams.pageSize.toString());
+  searchParams.beerName ? queryParams.set("beer_name", searchParams.beerName) : null;
+  queryParams.set("abv_gt", searchParams.filter.abv[0].toString());
+  queryParams.set("abv_lt", searchParams.filter.abv[1].toString());
+  queryParams.set("ibu_gt", searchParams.filter.ibu[0].toString());
+  queryParams.set("ibu_lt", searchParams.filter.ibu[1].toString());
+  queryParams.set("ebc_gt", searchParams.filter.ebc[0].toString());
+  queryParams.set("ebc_lt", searchParams.filter.ebc[1].toString());
 
   dispatch(setIsCatalogLoading(true));
   const response = await fetch(`https://api.punkapi.com/v2/beers?${queryParams.toString()}`);
