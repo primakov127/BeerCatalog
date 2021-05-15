@@ -18,21 +18,51 @@
     justify-content: center;
   }
 
+  .beer-catalog-card__button {
+    margin-left: auto;
+
+    cursor: pointer;
+
+    color: $red-color;
+    border: none;
+    background-color: transparent;
+
+    font-size: 32px;
+  }
+
+  .beer-catalog-card__link {
+    padding: 5px;
+
+    text-align: center;
+
+    color: $white-color;
+    background-color: $blue-color;
+    box-shadow: rgba(67, 71, 85, 0.27) 0 0 0.25em, rgba(90, 125, 188, 0.05) 0 0.25em 1em;
+  }
+
+  .beer-catalog-card__link:hover {
+    background-color: $red-color;
+  }
+
   .beer-catalog-card__container {
     display: flex;
     flex-direction: column;
     flex: 1;
 
-    justify-content: center;
+    padding: 10px;
+
+    background-color: #f9f9f9;
 
     .beer-catalog-card__title {
       font-size: 32px;
-      text-align: center;
+      font-weight: 500;
     }
 
     .beer-catalog-card__tagline {
+      flex: 1;
+
       font-size: 20px;
-      text-align: center;
+      font-style: italic;
     }
   }
 }

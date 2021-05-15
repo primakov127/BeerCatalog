@@ -1,0 +1,36 @@
+@import "../../styles/colors.scss";
+
+.pagination-bar {
+  display: flex;
+
+  .pagination-bar__link {
+    display: block;
+
+    width: 30px;
+    height: 30px;
+    margin: 3px;
+    padding: auto;
+
+    text-align: center;
+
+    color: $white-color;
+    border-radius: 3px;
+    background-color: $blue-color;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0, rgba(27, 31, 35, 0.15) 0 0 0 1px;
+
+    line-height: 30px;
+    font-weight: 600;
+  }
+
+  .pagination-bar__link:hover {
+    color: $red-color;
+  }
+
+  .pagination-bar__link_active {
+    color: $red-color;
+  }
+
+  .pagination-bar__link_disabled {
+    cursor: not-allowed;
+  }
+}

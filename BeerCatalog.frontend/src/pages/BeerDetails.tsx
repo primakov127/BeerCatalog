@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { ClipLoader } from "react-spinners";
 import ReactTooltip from "react-tooltip";
+import RoundedImage from "../components/RoundedImage/roundedImage";
 import Wrapper from "../components/Wrapper/wrapper";
 import { addBeerFavorites, removeBeerFavorites } from "../store/action";
 
@@ -46,9 +47,7 @@ const BeerDetails = () => {
             </div>
             <p>{beer.description}</p>
           </div>
-          <div className="beer-details__img-wrapper">
-            <img src={beer.image_url} />
-          </div>
+          <RoundedImage imageUrl={beer.image_url} />
         </div>
         <div className="beer-details__middle">
           <div className="beer-details__properties">

@@ -19,7 +19,7 @@ const App = () => {
           <Header />
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/favorites" component={Favorites} />
+            <Route path="/favorites/:page?" component={Favorites} />
             <Route path="/beers/:id" component={BeerDetails} />
           </Switch>
         </Router>

@@ -24,8 +24,8 @@ const Search = ({ placeholder, onSearch }: SearchProps) => {
     onSearch(inputValue);
   };
 
-  const handleInput = (event: ChangeEvent) => {
-    setInputValue((event.target as HTMLInputElement).value);
+  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
   };
 
   return (
