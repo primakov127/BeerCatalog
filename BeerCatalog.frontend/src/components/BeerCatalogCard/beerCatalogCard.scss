@@ -7,13 +7,18 @@
   height: 300px;
   margin: 20px;
 
-  box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
+  background-color: #f9f9f9;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px, rgba(0, 0, 0, 0.24) 0 1px 2px;
 
   .beer-catalog-card__img-wrapper {
     display: flex;
     overflow: hidden;
 
     width: 60px;
+    margin: 10px;
+    padding: 40px;
+
+    box-shadow: rgba(50, 50, 93, 0.25) 0 0 60px -12px inset, rgba(0, 0, 0, 0.3) 0 18px 36px -18px inset;
 
     justify-content: center;
   }
@@ -49,9 +54,7 @@
     flex-direction: column;
     flex: 1;
 
-    padding: 10px;
-
-    background-color: #f9f9f9;
+    padding: 10px 10px 10px 0;
 
     .beer-catalog-card__title {
       font-size: 32px;
