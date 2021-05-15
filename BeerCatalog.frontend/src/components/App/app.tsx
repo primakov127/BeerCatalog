@@ -3,11 +3,11 @@ import { createBrowserHistory } from "history";
 import { Provider } from "react-redux";
 
 import Header from "../Header/header";
-import Favorites from "../../pages/Favorites";
-import Home from "../../pages/Home";
+import BeerCatalogPage from "../BeerCatalogPage/beerCatalogPage";
+import BeerDetailsPage from "../BeerDetailsPage/beerDetailsPage";
+import FavoritesPage from "../FavoritesPage/favoritesPage";
 
 import store from "../../store/store";
-import BeerDetails from "../../pages/BeerDetails";
 
 const App = () => {
   const history = createBrowserHistory();
@@ -18,9 +18,9 @@ const App = () => {
         <Router history={history}>
           <Header />
           <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/favorites/:page?" component={Favorites} />
-            <Route path="/beers/:id" component={BeerDetails} />
+            <Route path="/" exact component={BeerCatalogPage} />
+            <Route path="/favorites/:page?" component={FavoritesPage} />
+            <Route path="/beers/:id" component={BeerDetailsPage} />
           </Switch>
         </Router>
       </Provider>

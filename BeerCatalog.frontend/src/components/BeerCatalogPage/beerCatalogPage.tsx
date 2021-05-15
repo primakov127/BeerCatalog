@@ -1,12 +1,13 @@
 import { useDispatch } from "react-redux";
 
-import BeerCatalog from "../components/BeerCatalog/beerCatalog";
-import Filters from "../components/Filters/filters";
-import Search from "../components/Search/search";
-import Wrapper from "../components/Wrapper/wrapper";
-import { resetSearchCurrentPage, setBeerCatalog, setSearchBeerName } from "../store/action";
+import BeerCatalog from "../BeerCatalog/beerCatalog";
+import Filters from "../Filters/filters";
+import Search from "../Search/search";
+import Wrapper from "../Wrapper/wrapper";
 
-const Home = () => {
+import { resetSearchCurrentPage, setBeerCatalog, setSearchBeerName } from "../../store/action";
+
+const BeerCatalogPage = () => {
   const dispatch = useDispatch();
 
   const handleSearch = (input: string) => {
@@ -31,4 +32,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default BeerCatalogPage;
