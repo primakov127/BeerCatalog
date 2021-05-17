@@ -12,7 +12,7 @@
     }
 
     .beer-details-heading__tagline {
-      color: $gray-color;
+      color: $color3;
 
       font-size: 16px;
       font-style: italic;
@@ -27,7 +27,7 @@
       text-align: center;
 
       color: $white-color;
-      background-color: $blue-color;
+      background-color: $color2;
       box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
 
       font-size: 16px;
@@ -35,7 +35,7 @@
     }
 
     .beer-details-heading__button:hover {
-      background-color: $red-color;
+      background-color: $color1;
     }
   }
 }

@@ -21,7 +21,7 @@
       }
 
       .favorite-beer-card__tagline {
-        color: $gray-color;
+        color: $color3;
 
         font-size: 16px;
         font-style: italic;
@@ -49,6 +49,6 @@
   }
 
   .favorite-beer-card__link:hover {
-    background-color: $gray-color;
+    background-color: $color3;
   }
 }

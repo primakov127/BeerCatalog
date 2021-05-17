@@ -23,7 +23,7 @@
   .search__input:focus {
     padding-bottom: 6px;
     border-width: 3px;
-    border-color: $red-color;
+    border-color: $color1;
   }
 
   .search__button {
@@ -33,6 +33,6 @@
   }
 
   .search__button:hover {
-    color: $red-color;
+    color: $color1;
   }
 }

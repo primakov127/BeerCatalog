@@ -28,7 +28,7 @@
 
     cursor: pointer;
 
-    color: $red-color;
+    color: $color1;
     border: none;
     background-color: transparent;
 
@@ -41,12 +41,12 @@
     text-align: center;
 
     color: $white-color;
-    background-color: $blue-color;
+    background-color: $color2;
     box-shadow: rgba(67, 71, 85, 0.27) 0 0 0.25em, rgba(90, 125, 188, 0.05) 0 0.25em 1em;
   }
 
   .beer-catalog-card__link:hover {
-    background-color: $red-color;
+    background-color: $color1;
   }
 
   .beer-catalog-card__container {
