@@ -1,0 +1,41 @@
+@import "../../styles/colors.scss";
+
+.beer-details {
+  padding: 20px 0;
+
+  .beer-details__middle {
+    display: flex;
+
+    margin-top: 30px;
+
+    .beer-details__properties {
+      width: 300px;
+      margin-right: 100px;
+
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+
+  .beer-details__brewing {
+    max-width: 700px;
+    margin-top: 30px;
+  }
+
+  .beer-details__bottom {
+    display: flex;
+
+    margin-top: 30px;
+
+    .beer-details__ingredients {
+      width: 800px;
+      margin-right: 100px;
+    }
+  }
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}

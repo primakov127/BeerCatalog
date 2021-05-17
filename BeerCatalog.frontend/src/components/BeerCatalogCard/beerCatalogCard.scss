@@ -1,0 +1,71 @@
+@import "../../styles/colors.scss";
+
+.beer-catalog-card {
+  display: flex;
+
+  width: 350px;
+  height: 300px;
+  margin: 20px;
+
+  background-color: #f9f9f9;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px, rgba(0, 0, 0, 0.24) 0 1px 2px;
+
+  .beer-catalog-card__img-wrapper {
+    display: flex;
+    overflow: hidden;
+
+    width: 60px;
+    margin: 10px;
+    padding: 40px;
+
+    box-shadow: rgba(50, 50, 93, 0.25) 0 0 60px -12px inset, rgba(0, 0, 0, 0.3) 0 18px 36px -18px inset;
+
+    justify-content: center;
+  }
+
+  .beer-catalog-card__button {
+    margin-left: auto;
+
+    cursor: pointer;
+
+    color: $color1;
+    border: none;
+    background-color: transparent;
+
+    font-size: 32px;
+  }
+
+  .beer-catalog-card__link {
+    padding: 5px;
+
+    text-align: center;
+
+    color: $white-color;
+    background-color: $color2;
+    box-shadow: rgba(67, 71, 85, 0.27) 0 0 0.25em, rgba(90, 125, 188, 0.05) 0 0.25em 1em;
+  }
+
+  .beer-catalog-card__link:hover {
+    background-color: $color1;
+  }
+
+  .beer-catalog-card__container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    padding: 10px 10px 10px 0;
+
+    .beer-catalog-card__title {
+      font-size: 32px;
+      font-weight: 500;
+    }
+
+    .beer-catalog-card__tagline {
+      flex: 1;
+
+      font-size: 20px;
+      font-style: italic;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+@import "../../styles/colors.scss";
+
+.beer-properties-item {
+  display: flex;
+
+  justify-content: space-between;
+  .beer-properties-item__tooltip {
+    display: inline-block;
+
+    width: 15px;
+    min-height: 15px;
+    margin-left: 5px;
+
+    cursor: default;
+    text-align: center;
+
+    color: $color3;
+    border: 1px solid $color3;
+    border-radius: 50%;
+
+    font-size: 10px;
+  }
+}

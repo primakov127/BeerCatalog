@@ -1,0 +1,54 @@
+@import "../../styles/colors.scss";
+
+.favorite-beer-card {
+  padding: 20px;
+
+  box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
+
+  .favorite-beer-card__container {
+    display: flex;
+
+    .favorite-beer-card__information {
+      flex: 1;
+
+      margin-right: 20px;
+
+      .favorite-beer-card__name {
+        margin-bottom: 5px;
+
+        font-size: 26px;
+        font-weight: 400;
+      }
+
+      .favorite-beer-card__tagline {
+        color: $color3;
+
+        font-size: 16px;
+        font-style: italic;
+      }
+
+      .favorite-beer-card__description {
+        margin-top: 10px;
+
+        font-size: 16px;
+      }
+    }
+  }
+
+  .favorite-beer-card__link {
+    display: inline-block;
+
+    margin-right: 10px;
+    padding: 5px;
+
+    cursor: pointer;
+
+    color: $black-color;
+    border: none;
+    background-color: transparent;
+  }
+
+  .favorite-beer-card__link:hover {
+    background-color: $color3;
+  }
+}
