@@ -28,7 +28,7 @@ const BeerCatalog = () => {
   useEffect(() => {
     dispatch(resetSearchCurrentPage());
     dispatch(setBeerCatalog([]));
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     const loadTimeout = setTimeout(() => {
