@@ -9,7 +9,9 @@ import Wrapper from "../Wrapper/wrapper";
 import { BeerItem } from "../../store/models/BeerItem";
 import { AppState } from "../../store/state";
 
-import { FAVORITE_API_QUERY_SEPARATOR, FAVORITE_PAGE_SIZE } from "../../constants/beerCatalogConstants";
+import { FAVORITE_PAGE_SIZE } from "../../constants/beerCatalogConstants";
+
+import { getBeersByIds } from "../../api/punkAPI";
 
 import "./favoritesPage.scss";
 
@@ -24,13 +26,9 @@ const FavoritesPage = () => {
     return `/favorites/${pageNum}`;
   }, []);
 
-  const separatedBeerIDs = favoriteBeerIDs.join(FAVORITE_API_QUERY_SEPARATOR);
-
   useEffect(() => {
-    fetch(`https://api.punkapi.com/v2/beers?ids=${separatedBeerIDs}&per_page=${FAVORITE_PAGE_SIZE}&page=${page}`)
-      .then((res) => res.json())
-      .then((data) => setBeers(data));
-  }, [page, favoriteBeerIDs, separatedBeerIDs]);
+    getBeersByIds(favoriteBeerIDs, page, FAVORITE_PAGE_SIZE).then((result) => setBeers(result));
+  }, [page, favoriteBeerIDs]);
 
   return favoriteBeerIDs.length === 0 ? (
     <h1 className="favorites__banner">There are no items in your favorites list :(</h1>

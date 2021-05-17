@@ -1,5 +1,6 @@
 import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
+import { getBeers } from "../api/punkAPI";
 
 import { BeerItem } from "./models/BeerItem";
 import { AppState } from "./state";
@@ -91,21 +92,9 @@ export const setFilterEBC = (value: number[]): ActionType => ({
 
 export const loadBeerCatalog = (): ThunkAction<void, AppState, unknown, Action> => async (dispatch, getState) => {
   const searchParams = getState().searchParams;
-  const queryParams = new URLSearchParams();
-
-  queryParams.set("page", searchParams.currentPage.toString());
-  queryParams.set("per_page", searchParams.pageSize.toString());
-  searchParams.beerName ? queryParams.set("beer_name", searchParams.beerName) : null;
-  queryParams.set("abv_gt", searchParams.filter.abv[0].toString());
-  queryParams.set("abv_lt", searchParams.filter.abv[1].toString());
-  queryParams.set("ibu_gt", searchParams.filter.ibu[0].toString());
-  queryParams.set("ibu_lt", searchParams.filter.ibu[1].toString());
-  queryParams.set("ebc_gt", searchParams.filter.ebc[0].toString());
-  queryParams.set("ebc_lt", searchParams.filter.ebc[1].toString());
 
   dispatch(setIsCatalogLoading(true));
-  const response = await fetch(`https://api.punkapi.com/v2/beers?${queryParams.toString()}`);
-  const beerCatalog: BeerItem[] = await response.json();
+  const beerCatalog = await getBeers(searchParams);
   dispatch(setIsCatalogLoading(false));
 
   return dispatch(addBeerCatalog(beerCatalog));

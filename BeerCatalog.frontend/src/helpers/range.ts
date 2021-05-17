@@ -1,5 +1,5 @@
-const range = (start: number, end: number | void, step: number = 1): number[] => {
-  let output = [];
+const range = (start: number, end: number | void, step = 1): number[] => {
+  const output = [];
   if (typeof end === "undefined") {
     end = start;
     start = 1;

@@ -14,6 +14,8 @@ import { addBeerFavorites, removeBeerFavorites } from "../../store/action";
 import { BeerItem } from "../../store/models/BeerItem";
 import { AppState } from "../../store/state";
 
+import { getBeerById } from "../../api/punkAPI";
+
 import "./beerDetailsPage.scss";
 
 const BeerDetailsPage = () => {
@@ -30,9 +32,7 @@ const BeerDetailsPage = () => {
   }, [isFavorite, numberId, dispatch]);
 
   useEffect(() => {
-    fetch(`https://api.punkapi.com/v2/beers/${id}`)
-      .then((res) => res.json())
-      .then((data) => setBeer(data[0]));
+    getBeerById(id).then((result) => setBeer(result));
   }, [id]);
 
   return beer === null ? (

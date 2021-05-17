@@ -7,3 +7,5 @@ export const FILTERS_IBU_MAX_VALUE = 56;
 export const FILTERS_IBU_STEP = 1;
 export const FILTERS_EBC_MAX_VALUE = 56;
 export const FILTERS_EBC_STEP = 1;
+
+export const PUNK_API_URL = "https://api.punkapi.com/v2";
