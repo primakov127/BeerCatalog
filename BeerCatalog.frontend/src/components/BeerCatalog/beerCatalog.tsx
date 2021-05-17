@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import PulseLoader from "react-spinners/PulseLoader";
 
 import useIntersectionObserver from "../../hooks/useIntersectionObserver";
-import { incSearchCurrentPage, loadBeerCatalog } from "../../store/action";
+import { incSearchCurrentPage, loadBeerCatalog, resetSearchCurrentPage, setBeerCatalog } from "../../store/action";
 import { AppState } from "../../store/state";
 import BeerCatalogCard from "../BeerCatalogCard/beerCatalogCard";
 
@@ -24,6 +24,11 @@ const BeerCatalog = () => {
   };
 
   useIntersectionObserver(lastElement, handleObserver);
+
+  useEffect(() => {
+    dispatch(resetSearchCurrentPage());
+    dispatch(setBeerCatalog([]));
+  }, []);
 
   useEffect(() => {
     const loadTimeout = setTimeout(() => {
