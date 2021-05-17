@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 
@@ -9,6 +9,8 @@ import Wrapper from "../Wrapper/wrapper";
 import { BeerItem } from "../../store/models/BeerItem";
 import { AppState } from "../../store/state";
 
+import { FAVORITE_API_QUERY_SEPARATOR, FAVORITE_PAGE_SIZE } from "../../constants/beerCatalogConstants";
+
 import "./favoritesPage.scss";
 
 const FavoritesPage = () => {
@@ -16,20 +18,19 @@ const FavoritesPage = () => {
   const favoriteBeerIDs = useSelector((state: AppState) => state.favoriteBeerIDs);
   const [beers, setBeers] = useState<BeerItem[] | null>(null);
 
-  const pageSize = 5;
-  const pageCount = Math.ceil(favoriteBeerIDs.length / pageSize);
+  const pageCount = useMemo(() => Math.ceil(favoriteBeerIDs.length / FAVORITE_PAGE_SIZE), [favoriteBeerIDs]);
 
-  const makeUrl = (pageNum: number) => {
+  const makeUrl = useCallback((pageNum: number) => {
     return `/favorites/${pageNum}`;
-  };
+  }, []);
 
-  const beerIDs = favoriteBeerIDs.join("|");
+  const separatedBeerIDs = favoriteBeerIDs.join(FAVORITE_API_QUERY_SEPARATOR);
 
   useEffect(() => {
-    fetch(`https://api.punkapi.com/v2/beers?ids=${beerIDs}&per_page=${pageSize}&page=${page}`)
+    fetch(`https://api.punkapi.com/v2/beers?ids=${separatedBeerIDs}&per_page=${FAVORITE_PAGE_SIZE}&page=${page}`)
       .then((res) => res.json())
       .then((data) => setBeers(data));
-  }, [page, favoriteBeerIDs, beerIDs]);
+  }, [page, favoriteBeerIDs, separatedBeerIDs]);
 
   return favoriteBeerIDs.length === 0 ? (
     <h1 className="favorites__banner">There are no items in your favorites list :(</h1>

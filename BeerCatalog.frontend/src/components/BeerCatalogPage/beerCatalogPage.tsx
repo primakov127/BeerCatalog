@@ -6,29 +6,31 @@ import Search from "../Search/search";
 import Wrapper from "../Wrapper/wrapper";
 
 import { resetSearchCurrentPage, setBeerCatalog, setSearchBeerName } from "../../store/action";
+import { useCallback } from "react";
 
 const BeerCatalogPage = () => {
   const dispatch = useDispatch();
 
-  const handleSearch = (input: string) => {
-    dispatch(resetSearchCurrentPage());
-    dispatch(setBeerCatalog([]));
-    dispatch(setSearchBeerName(input));
-  };
+  const handleSearch = useCallback(
+    (input: string) => {
+      dispatch(resetSearchCurrentPage());
+      dispatch(setBeerCatalog([]));
+      dispatch(setSearchBeerName(input));
+    },
+    [dispatch]
+  );
 
-  const nandleFilter = () => {
+  const handleFilter = useCallback(() => {
     dispatch(resetSearchCurrentPage());
     dispatch(setBeerCatalog([]));
-  };
+  }, [dispatch]);
 
   return (
-    <>
-      <Wrapper>
-        <Search placeholder="Search beers..." onSearch={handleSearch} />
-        <Filters onAnyChange={nandleFilter} />
-        <BeerCatalog />
-      </Wrapper>
-    </>
+    <Wrapper>
+      <Search placeholder="Search beers..." onSearch={handleSearch} />
+      <Filters onAnyChange={handleFilter} />
+      <BeerCatalog />
+    </Wrapper>
   );
 };
 

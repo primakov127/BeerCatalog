@@ -1,4 +1,5 @@
 import React from "react";
+import { useMemo } from "react";
 import { GrFormNext } from "react-icons/gr";
 import { GrFormPrevious } from "react-icons/gr";
 import { NavLink } from "react-router-dom";
@@ -14,15 +15,15 @@ interface PaginationBarProps {
 }
 
 const PaginationBar = ({ currentPage, pageCount, makeUrl }: PaginationBarProps) => {
-  const pagesNums = range(pageCount);
-  const isPreviousPage = currentPage > 1;
-  const isNextPage = currentPage < pageCount;
+  const pagesNums = useMemo(() => range(pageCount), [pageCount]);
+  const isPreviousPage = useMemo(() => currentPage > 1, [currentPage]);
+  const isNextPage = useMemo(() => currentPage < pageCount, [currentPage, pageCount]);
 
-  const prevLinkClassName = `pagination-bar__link ${isPreviousPage ? "" : "pagination-bar__link_disabled"}`;
-  const nextLinkClassName = `pagination-bar__link ${isNextPage ? "" : "pagination-bar__link_disabled"}`;
+  const prevLinkClassName = useMemo(() => `pagination-bar__link ${isPreviousPage ? "" : "pagination-bar__link_disabled"}`, [isPreviousPage]);
+  const nextLinkClassName = useMemo(() => `pagination-bar__link ${isNextPage ? "" : "pagination-bar__link_disabled"}`, [isNextPage]);
 
-  const onPrevLinkClick = isPreviousPage ? () => {} : (e: React.MouseEvent) => e.preventDefault();
-  const onNextLinkClick = isNextPage ? () => {} : (e: React.MouseEvent) => e.preventDefault();
+  const onPrevLinkClick = isPreviousPage ? () => ({}) : (e: React.MouseEvent) => e.preventDefault();
+  const onNextLinkClick = isNextPage ? () => ({}) : (e: React.MouseEvent) => e.preventDefault();
 
   return (
     <div className="pagination-bar">

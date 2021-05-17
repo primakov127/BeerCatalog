@@ -6,15 +6,15 @@ import Sidebar from "../Sidebar/sidebar";
 import "./Header.scss";
 
 const Header = () => {
-  const [sidebar, setSidebar] = useState<boolean>(false);
+  const [isSidebar, setIsSidebar] = useState<boolean>(false);
 
-  const showSidebar = useCallback(() => setSidebar(true), []);
-  const hideSidebar = useCallback(() => setSidebar(false), []);
+  const showSidebar = useCallback(() => setIsSidebar(true), []);
+  const hideSidebar = useCallback(() => setIsSidebar(false), []);
 
   return (
     <header className="header">
       <MenuButton onClick={showSidebar} />
-      <Sidebar isDisplayed={sidebar} onClose={hideSidebar} />
+      <Sidebar isDisplayed={isSidebar} onClose={hideSidebar} />
     </header>
   );
 };

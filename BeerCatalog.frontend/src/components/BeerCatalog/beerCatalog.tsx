@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PulseLoader from "react-spinners/PulseLoader";
 
@@ -16,12 +16,15 @@ const BeerCatalog = () => {
   const dispatch = useDispatch();
   const lastElement = useRef(null);
 
-  const handleObserver = (entities: IntersectionObserverEntry[]) => {
-    const target = entities[0];
-    if (target.isIntersecting) {
-      dispatch(incSearchCurrentPage());
-    }
-  };
+  const handleObserver = useCallback(
+    (entities: IntersectionObserverEntry[]) => {
+      const target = entities[0];
+      if (target.isIntersecting) {
+        dispatch(incSearchCurrentPage());
+      }
+    },
+    [dispatch]
+  );
 
   useIntersectionObserver(lastElement, handleObserver);
 

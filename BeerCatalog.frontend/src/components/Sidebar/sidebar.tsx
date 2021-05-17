@@ -1,4 +1,4 @@
-import { useCallback, useRef } from "react";
+import { useCallback, useMemo, useRef } from "react";
 import { NavLink } from "react-router-dom";
 
 import useOutsideClick from "../../hooks/useOutsideClick";
@@ -13,7 +13,8 @@ interface SidebarProps {
 
 const Sidebar = ({ isDisplayed, onClose }: SidebarProps) => {
   const navElment = useRef(null);
-  const navClassName = `sidebar ${isDisplayed ? "sidebar_active" : ""}`;
+
+  const navClassName = useMemo(() => `sidebar ${isDisplayed ? "sidebar_active" : ""}`, [isDisplayed]);
 
   const handleOutsideClick = useCallback(() => {
     if (isDisplayed) {

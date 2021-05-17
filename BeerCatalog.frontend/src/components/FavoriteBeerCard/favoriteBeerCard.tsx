@@ -1,3 +1,4 @@
+import { useCallback, useMemo } from "react";
 import Dotdotdot from "react-dotdotdot";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -18,11 +19,11 @@ interface FavoriteBeerCardProps {
 const FavoriteBeerCard = ({ id, name, tagline, description, image_url }: FavoriteBeerCardProps) => {
   const dispatch = useDispatch();
 
-  const beerDetailsPageUrl = `/beers/${id}`;
+  const beerDetailsPageUrl = useMemo(() => `/beers/${id}`, [id]);
 
-  const removeFavorite = () => {
+  const handleRemoveFromFavorite = useCallback(() => {
     dispatch(removeBeerFavorites(id));
-  };
+  }, [id, dispatch]);
 
   return (
     <div className="favorite-beer-card">
@@ -39,7 +40,7 @@ const FavoriteBeerCard = ({ id, name, tagline, description, image_url }: Favorit
       <Link className="favorite-beer-card__link" to={beerDetailsPageUrl}>
         OPEN
       </Link>
-      <button className="favorite-beer-card__link" onClick={removeFavorite}>
+      <button className="favorite-beer-card__link" onClick={handleRemoveFromFavorite}>
         REMOVE FAVORITE
       </button>
     </div>

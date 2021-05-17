@@ -1,10 +1,10 @@
-import { KeyboardEventHandler } from "react";
-import { ChangeEvent, useState } from "react";
+import { KeyboardEventHandler, useCallback } from "react";
+import { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 
-import "./search.scss";
+import { ENTER_KEY } from "../../constants/keyboardKeys";
 
-const ENTER_KEY = "Enter";
+import "./search.scss";
 
 interface SearchProps {
   placeholder?: string;
@@ -14,19 +14,22 @@ interface SearchProps {
 const Search = ({ placeholder, onSearch }: SearchProps) => {
   const [inputValue, setInputValue] = useState("");
 
-  const handleKeyDown: KeyboardEventHandler = (event) => {
-    if (event.key === ENTER_KEY) {
-      onSearch(inputValue);
-    }
-  };
+  const handleKeyDown: KeyboardEventHandler = useCallback(
+    (event) => {
+      if (event.key === ENTER_KEY) {
+        onSearch(inputValue);
+      }
+    },
+    [inputValue, onSearch]
+  );
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     onSearch(inputValue);
-  };
+  }, [inputValue, onSearch]);
 
-  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInput = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
-  };
+  }, []);
 
   return (
     <div className="search">

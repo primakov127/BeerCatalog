@@ -6,6 +6,7 @@ import { addBeerFavorites, removeBeerFavorites } from "../../store/action";
 import { AppState } from "../../store/state";
 
 import "./beerCatalogCard.scss";
+import { useCallback, useMemo } from "react";
 
 interface BeerCatalogCardProps {
   id: number;
@@ -18,11 +19,12 @@ const BeerCatalogCard = ({ id, name, tagline, image_url }: BeerCatalogCardProps)
   const isFavorite = useSelector((state: AppState) => state.favoriteBeerIDs.includes(id));
   const dispatch = useDispatch();
 
-  const BeerDetailsPageUrl = `/beers/${id}`;
-  const buttonIcon = isFavorite ? <AiFillStar /> : <AiOutlineStar />;
-  const handleClick = () => {
+  const BeerDetailsPageUrl = useMemo(() => `/beers/${id}`, [id]);
+  const buttonIcon = useMemo(() => (isFavorite ? <AiFillStar /> : <AiOutlineStar />), [isFavorite]);
+
+  const handleClick = useCallback(() => {
     isFavorite ? dispatch(removeBeerFavorites(id)) : dispatch(addBeerFavorites(id));
-  };
+  }, [id, isFavorite, dispatch]);
 
   return (
     <div className="beer-catalog-card">

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { ClipLoader } from "react-spinners";
@@ -23,7 +23,8 @@ const BeerDetailsPage = () => {
   const dispatch = useDispatch();
   const isFavorite = useSelector((state: AppState) => state.favoriteBeerIDs.includes(numberId));
 
-  const buttonText = isFavorite ? "REMOVE FROM FAVORITE" : "ADD TO FAVORITES";
+  const buttonText = useMemo(() => (isFavorite ? "REMOVE FROM FAVORITE" : "ADD TO FAVORITES"), [isFavorite]);
+
   const handleClick = useCallback(() => {
     isFavorite ? dispatch(removeBeerFavorites(numberId)) : dispatch(addBeerFavorites(numberId));
   }, [isFavorite, numberId, dispatch]);
