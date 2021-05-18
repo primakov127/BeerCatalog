@@ -24,7 +24,7 @@ namespace BeerCatalog.backend
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<BeerCatalogDbContext>(options =>
+            services.AddDbContext<DbContext, BeerCatalogDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
