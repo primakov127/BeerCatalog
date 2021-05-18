@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerCatalog.backend", "BeerCatalog.backend\BeerCatalog.backend.csproj", "{BD8CB6C5-AD1E-4FB3-9465-AE8A5441CC41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerCatalog.backend.DataAccess", "BeerCatalog.backend.DataAccess\BeerCatalog.backend.DataAccess.csproj", "{EA51D51B-3CDF-4B4C-8F0F-CEDDCB375885}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD8CB6C5-AD1E-4FB3-9465-AE8A5441CC41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD8CB6C5-AD1E-4FB3-9465-AE8A5441CC41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD8CB6C5-AD1E-4FB3-9465-AE8A5441CC41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD8CB6C5-AD1E-4FB3-9465-AE8A5441CC41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA51D51B-3CDF-4B4C-8F0F-CEDDCB375885}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA51D51B-3CDF-4B4C-8F0F-CEDDCB375885}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA51D51B-3CDF-4B4C-8F0F-CEDDCB375885}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA51D51B-3CDF-4B4C-8F0F-CEDDCB375885}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F5331957-BCC7-4B92-8120-0D420C24844E}
+	EndGlobalSection
+EndGlobal
